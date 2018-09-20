@@ -1,0 +1,58 @@
+\documentclass[xcolor=dvipsnames,table]{beamer}
+%\documentclass[xcolor=dvipsnames,table,handout]{beamer} %handout
+\usetheme{Hannover} %Madrid
+\usecolortheme{wolverine}
+\usepackage[english]{babel}  
+\usepackage{pgf}
+\usepackage{textcomp}
+\usepackage{pifont}
+\usepackage[abs]{overpic}
+\usepackage{eurosym}
+\usepackage{rotating}
+\usepackage{tabularx}
+\usepackage{multirow}
+%\usepackage{pgfpages}% handout
+%\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm] %handout
+%\mode<handout>{\setbeamercolor{background canvas}{bg=black!1}} % handout
+\setlength\unitlength{1mm}
+\setbeamercovered{dynamic}
+\setbeamertemplate*{logo}
+\setbeamercolor{block body}{use=structure,fg=black,bg=Goldenrod}
+\begin{document}
+\title[\color{black} Marking Behaviour \insertframenumber]{Variability in Human Tree Selection Behaviour}
+\author[]{Arne Pommerening}
+\institute[SLU]{H\"o\"or, 27/28 May 2014\\\vspace{0.5cm}\textbf{Swedish University of Agricultural Sciences\\\vspace{0.2cm} Department of Forest Resource Management}\\\vspace{0.3cm} Ume\aa, Sweden}
+\date[]{}                                           
+\titlegraphic{\vspace{-0.0cm}\includegraphics[scale=0.70]{slu_logo_pms.png}}
+\frame{\titlepage
+}
+
+\section{Introduction}
+
+\frame{
+\frametitle{What Is It Actually About?}
+\begin{itemize}
+\item<1-| alert@1> Guidelines/prescriptions for mixed-species forests.
+\item<2-| alert@2> Silviculturists/forest managers propose them.
+\item<3-| alert@3> Operational staff is supposed to carry them out.
+\item<4-| alert@4> ``Precision forestry'' or ``Chinese whispers''?
+\item<5-| alert@5> There is very likely to be quite some variation particularly in mixed forests.
+\item<6-| alert@6> Key: Marteloscope experiments to quantify variation \textsl{in} and \textsl{between} people.
+\end{itemize}
+}
+
+\section{Methods}
+
+\frame{
+	\frametitle{My First R Graph On A Beamer Slide}
+	\begin{center} 
+	\begin{overpic}[scale=0.40]{MortalityRGR.pdf} 
+		\put(23,50){\footnotesize $p_{i,t}^{5, \text{crit}}(m_{i,t}) = a \cdot m_{i,t}^{-b}$}
+		\put(9,65){\footnotesize RGR}
+		\put(57,8){\footnotesize $m_{i,t}$ [cm]}
+		\put(-4,-5){\scriptsize H\"abel \textsl{et al}. (2018) based on Pommerening \& S\"arkk\"a (2013)}
+	\end{overpic}
+\end{center}
+}
+
+\end{document}

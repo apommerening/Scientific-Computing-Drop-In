@@ -1,0 +1,42 @@
+
+\documentclass[12pt]{article}
+\usepackage[english]{babel}  
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\geometry{a4paper} % or letter or a5paper or ... etc
+\usepackage{amsmath}    
+
+% See the ``Article customise'' template for come common customisations
+
+\title{\textbf{Scientific Computing :: Drop In}}
+\author{Arne Pommerening}
+\date{\empty} % delete this line to display the current date
+\renewcommand{\baselinestretch}{1.2} 
+
+%%% BEGIN DOCUMENT
+\begin{document}
+\maketitle
+
+\thispagestyle{empty} 
+\noindent
+\rule{\textwidth}{0.2mm}
+\begin{tabbing}
+Session \quad \=  22 October 2010 \quad \= \kill
+\textbf{Session:} \>\  3 \\
+\textbf{Date:} \>\ 21 September 2018\\
+\textbf{Activity:} \>\ \LaTeX\ and R
+\end{tabbing}
+\rule{\textwidth}{0.2mm}
+
+\subsubsection*{Design a really nice presentation}
+The free typesetting software \LaTeX\ cooperates with R very well. In addition \LaTeX\ beamer presentations are pdf based and therefore independent of computer operating systems and different MS Office versions. With a \LaTeX\ beamer presentation you can be sure that your slides are shown by the conference computer exactly as intended, and since the software follows certain design rules, your \LaTeX\ beamer presentation is sure to make a positive impression. 
+
+To get ready for this introduction to \LaTeX\ beamer please download \texttt{MiKTeX} from \texttt{https://miktex.org/} and install it on your computer. Next please download \texttt{TeXstudio} from \texttt{https://www.texstudio.org/} and install this software on your computer, too. Having done this you can open \texttt{TeXstudio}. For Mac computers I recommend \texttt{TeXShop} on \texttt{https://pages.uoregon.edu/koch/texshop} instead.  
+
+Download the sample file \verb+PresentationTemplate.tex+ from \verb+https://github.+ \verb+com/apommerening+ and open it in \texttt{TeXstudio}. You also need files \verb+slu_logo_pms.+ \verb+png+ and \verb+MortalityRGR.pdf+. In the R script \verb+ModelRelativeGrowthMortalityDF.R+ you find instructions on how to produce an R graph for a \LaTeX\ beamer presentation. 
+
+Your task is first to listen to my little lecture on this subject and then to ``play around'' with \verb+PresentationTemplate.tex+ in such a way that you create your very own and personal presentation.
+
+By the way, \LaTeX\ can also be used to produce really nice text documents and you can find the source file \verb+LatexBeamerPresentation.tex+ of this document on \verb+https://github.com/apommerening+, too. \LaTeX\ can particularly be recommended for writing MSc and PhD theses or scientific books.  
+
+
+\end{document}
