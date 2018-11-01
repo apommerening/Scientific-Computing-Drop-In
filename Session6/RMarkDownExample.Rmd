@@ -1,0 +1,139 @@
+---
+title: "R Markdown Example"
+author: "Arne Pommerening"
+date: "1 November 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+This is a section header. Demonstration of markdown features.
+
+
+### Lists and other things
+
++ Packages
+    + markdown
+    + knitr
++ Output
+    + pdf
+    + HTML
+    + word
+
+1. Packages
+    1. rmarkdown
+    1. knitr
+    1. ggplot2
+3. Output
+    1. Pdf
+    2. HTML
+    2. Word
+
+This is Text. This word is **bold**. And here there is one printed in *italics*.
+
+Underscores are also possible:
+
+* __bold__
+* _italics_ using underscores \_
+* ~~strike~~
+* standard
+
+### Links
+
+https://github.com/apommerening/Scientific-Computing-Drop-In
+
+[Arne's github repository for the drop-in sessions](https://github.com/apommerening/Scientific-Computing-Drop-In)
+
+[Markdown cheat sheet 1] (https://www.markdownguide.org/cheat-sheet/)
+
+[Markdown cheat sheet 2] (https://en.support.wordpress.com/markdown-quick-reference/)
+
+### Equations (use Latex syntax)
+
+$\overline{d} = \frac{1}{k} \sum_{i = 1}^k d_i$
+
+
+## Including data and calculations
+
+```{r echo = TRUE}
+myData <- read.table("Allmitwald.txt", header = T)		
+dim(myData)										
+names(myData)										
+```
+
+Note you can set `echo = FALSE` in the code chunk to prevent printing of the R code that generated the plot:
+
+```{r echo = FALSE}
+myData <- read.table("Allmitwald.txt", header = T)		
+dim(myData)										
+names(myData)										
+```
+
+Number of trees per plot:
+
+
+```{r echo = FALSE}
+tapply(myData$treeNumber, myData$plotNumber, length)		
+
+```
+
+Number of species (BE - beech, NS - Norway spruce, SF - silver fir, SP - Scots pine):
+```{r echo = TRUE}
+table(myData$species)		
+
+
+```
+Mean and range of h/d ratios:
+```{r echo = TRUE}
+mean(100 * myData$height / myData$dbh)		
+range(100 * myData$height / myData$dbh)		
+```
+
+## Including Plots
+
+You can also embed plots, for example the empirical stem diameter distribution:
+
+First let's check the stem diameter range:
+```{r echo = TRUE}
+range(myData$dbh)
+```
+
+Now let's plot the empirical distribution:
+
+```{r echo = FALSE}
+hist1 <- hist(myData$dbh, include.lowest = TRUE, right = FALSE, plot = FALSE, breaks = seq(8, 84, by = 4))#
+hist1$counts <- hist1$counts / length(myData$dbh)
+par(mar = c(2, 4, 1, 2))
+plot(hist1, las = 1, cex.axis = 1.2, lwd = 2, ylim = c(0, 0.25), main = "", xlab = "", ylab = "") 
+```
+
+Of course, it makes sense to include some text on your interpretation here. For example you could note that the stem diameter distribution is bimodal and that it might be a good idea to find out what species contribute to which mode.
+
+And to have a map of one of the plots may also be helpful:
+
+```{r echo = FALSE}
+# install.packages("plotrix", dep = T)
+library(plotrix)
+myData$x <- myData$distance * sin(myData$azimuth * pi / 180)
+myData$y <- myData$distance * cos(myData$azimuth * pi / 180)
+myData$colour <- "brown" 
+myData$colour[myData$species == "BE"] <- "red" 
+myData$colour[myData$species == "SF"] <- "purple" 
+myData$colour[myData$species == "SP"] <- "orange" 
+plotNumber <- 1
+plotString <- paste("Plot", toString(plotNumber), sep=" ")
+myData.onePlot <- subset(myData, myData$plotNumber == plotNumber)			
+radius <- myData.onePlot$radius[1]
+
+par(mar = c(2, 0, 2, 0))
+plot(myData.onePlot$x, myData.onePlot$y, xlab = "", ylab = "", cex = 5 * myData.onePlot$dbh/max(myData$dbh), las = 1, axes = FALSE, xlim = c(-radius - 1, radius + 1), ylim = c(-radius - 1, radius + 1), asp = 1, main = plotString, col = myData.onePlot$colour, lwd = 2) 
+# for (i in 1 : length(myData.onePlot$treeNumber))  
+#  text(myData.onePlot$x[i] + 1.6 * myData.onePlot$dbh[i]/max(myData$dbh), myData.onePlot$y[i]- 2.0 *  myData.onePlot$dbh[i]/max(myData$dbh), myData.onePlot$treeNumber[i], cex = .8, pos = 2, col = "black") # 1.6 0.8
+draw.circle(0, 0, myData.onePlot$radius[1], nv = 100, lty = 1,lwd = 2) 
+axis(1, lwd = 2, cex.axis = 1.3)
+legend("right", inset = 0, title = "",c("BE", "NS", "SF", "SP"), fill = c("red", "brown", "purple", "orange"), bty = "n", cex = 1.3)
+```
+
