@@ -1,0 +1,64 @@
+---
+title: "Tutorial"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+### Quiz
+
+*You can include any number of single or multiple choice questions as a quiz. Use the `question` function to define a question and the `quiz` function for grouping multiple questions together.*
+
+```{r quiz}
+quiz(caption = "Xmas Quizzy Related To our R Drop-In...", 
+  question("What is the name of the package allowing you to combine R with higher programming languages?", random_answer_order = TRUE,
+    answer("Fccp"),
+    answer("Rfortran"),
+    answer("Rcpp", correct = TRUE),
+    answer("Rccp")
+  ),
+  question("Which package do I have to use to create web applications with R?", random_answer_order = TRUE,
+    answer("Polish"),
+    answer("Tidyverse"),
+    answer("Frosted"),
+    answer("Shiny", correct = TRUE)
+  ),
+  question("How do we compute the coefficient of variation for a variable x in R?", random_answer_order = TRUE,
+    answer("sd(x) / mean(x)", correct = TRUE),
+    answer("var(x)"),
+    answer("sd(x)"),
+    answer("sd(x) / median(x)")
+  ),
+  question("What can we do to correct the code 'mean(7, 8, 3)'?", random_answer_order = TRUE,
+    answer("Nothing. It is correct."),
+    answer("Write 'a <- c(7, 8, 3)' and then 'mean(a)'.", correct = TRUE),
+    answer("No idea."),
+    answer("Write 'mean(c(7, 8, 3))'", correct = TRUE)
+  ),
+  question("Consider data frame 'myData' with vectors 'dbh' and 'species'. How can we subset the data according to species 1?", random_answer_order = TRUE,
+    answer("dbh1 <- subset(myData, species == 1)", correct = TRUE),
+    answer("dbh1 <- myData$dbh[myData$species == 1]", correct = TRUE),
+    answer("dbh1 <- tapply(myData$dbh, myData$species, length)"),
+    answer("table(myData$species)")
+  ),
+  question("How to do you code 3! in R?", random_answer_order = TRUE,
+    answer("factorial(3)", correct = TRUE),
+    answer("1 * 2 * 3", correct = TRUE),
+    answer("factor(3)"),
+    answer("a * 3")
+  ),
+  question("How to do you code $\\prod_{i=1}^n x_i$ in R?", random_answer_order = TRUE,
+    answer("product(x)"),
+    answer("sum(x)"),
+    answer("prod(x)", correct = TRUE),
+    answer("mySum <- 0 for (i in 1 : length(x)) mySum <- mySum + x[i]", correct = TRUE)
+  )
+)
+```
+# $\prod_{i=1}^n x_i$
+
